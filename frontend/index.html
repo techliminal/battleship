@@ -1,0 +1,65 @@
+<html>
+<head>
+<style>
+
+/* replace w/ sass */
+
+body{
+	display:flex;
+	flex-flow:row wrap;
+}
+
+.board{
+	background-color: #ccc;
+	border-radius: 10px;
+	justify-content: center;
+	margin-bottom:20px;
+	padding:20px;
+	min-width: 650px;
+}
+
+.board:first-child{
+	margin-right:10px;
+}
+
+.boards{
+	display:flex;
+	justify-content:center;
+	min-height:300px;
+}
+
+.pegboard, .shipboard{
+	min-width:300px;
+	min-height: 300px;
+}
+
+.pegboard{background-color: #efefef;}
+.shipboard{background-color: #33ccff;}
+
+.message{
+	clear:both;
+}
+
+</style>
+
+</head>
+<body>
+<section id="player1" class="board">
+<h1>Player 1</h1>
+<div id="m1" class="message">Message</div>
+<div class="boards">
+<div id="pb1" class="pegboard"></div>
+<div id="sb1" class="shipboard"></div>
+</div>
+</section>
+<section id="player2" class="board">
+<h1>Player 2</h1>
+<div id="m2" class="message">Message</div>
+<div class="boards">
+<div id="pb2" class="pegboard"></div>
+<div id="sb2" class="shipboard"></div>
+
+</div>
+</div>
+</body>
+</html>
