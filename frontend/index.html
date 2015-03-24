@@ -5,7 +5,8 @@
 
 <script type="text/javascript">
 
-var BattleApp = function ($){
+var BBoard = function ($){
+
 	return {
 		init: function(){
 			this.drawGrid('#pb1');
@@ -13,7 +14,10 @@ var BattleApp = function ($){
 			this.drawGrid('#pb2');
 			this.drawGrid('#sb2');
 			var s1 = {x:2, y:2};
-			this.drawShip('#pb1', s1, 1, '#f11');
+			var e1 = {x:3, y:2};
+			this.drawShip('#pb1', s1, e1, '#f11');
+			
+			
 		},
 		drawGrid: function(container_id){
 			var cv = $(container_id)[0];
@@ -51,19 +55,52 @@ var BattleApp = function ($){
 			var cx = cv.getContext("2d");
 			
 			var boxsize = $(container_id).data('boxsize');
-			console.log(start);
+			var shipwidth = boxsize * .75;
+			
+			// figure out if it's horizontal or vertical
+			
+			if (start.x == end.x && start.y !=  end.y){
+				// vertical
+				startAngle = 1 * Math.PI;
+				endAngle = 0;
+			} else if (start.x != end.x && start.y == end.y){
+				//horizontal
+				startAngle = .5 * Math.PI;
+				endAngle = 1.5 * Math.PI;
+			} else {
+				//submarine
+			}
+			
 			cx.beginPath();
-			cx.arc(start.x, start.y, 30, Math.PI, false);
+			
+			// front of the ship
+			cx.arc((start.x * boxsize) - boxsize/2, 
+						(start.y * boxsize) - boxsize/2, 
+							shipwidth/2, 
+							startAngle,
+							endAngle,
+							false);						
+			// back of the ship
+				cx.arc((end.x * boxsize) - boxsize/2, 
+						(end.y * boxsize) - boxsize/2, 
+							shipwidth/2, 
+							endAngle,
+							startAngle,
+							false);
+							
 			cx.closePath();
-			cx.strokeStyle=color;
+			cx.fillStyle = color;
+			cx.fill();
+			cx.strokeStyle = color;
 			cx.stroke();
 		}
 	}
+	
+
 }
 
 jQuery(document).ready(function () {
-	var bapp = BattleApp(jQuery);
-	//bapp.drawGrid("#pb1");
+	var bapp = BBoard(jQuery);
 	bapp.init();
 });
 </script>
