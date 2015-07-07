@@ -40,8 +40,17 @@ void loop(){
 
 int checkSwitch(){  
   
+if (digitalRead(0)==LOW){
+   Serial.println("low pin0");
+}
+if (digitalRead(1)==LOW){
+   Serial.println("low pin1");
+}
 if (digitalRead(2)==LOW){
    Serial.println("low pin2");
+}
+if (digitalRead(3)==LOW){
+   Serial.println("low pin3");
   }
 }
  
