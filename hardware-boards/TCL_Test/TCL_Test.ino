@@ -9,7 +9,7 @@
 #include <SPI.h>
 #include <TCL.h>
 
-const int numPixels = 18;
+const int numPixels =25;
 
 
 void setup() {
